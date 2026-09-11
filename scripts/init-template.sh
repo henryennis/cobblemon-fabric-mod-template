@@ -101,7 +101,10 @@ replace "Your Name" "$AUTHOR"
 replace "Copyright (c) 2026 Henry Ennis-Thomas" "Copyright (c) $YEAR $AUTHOR"
 [ -n "$DESCRIPTION" ] && replace "A Cobblemon side-mod built from the Fabric template." "$DESCRIPTION"
 
-# 4. Fresh changelog and README for the new mod.
+# 4. Drop the template-only parts of the agent guide: the "still a template" note and the placeholder table.
+perl -0pi -e 's/\nIf `scripts\/init-template\.sh` still exists.*?\n\n//s; s/\n## Template placeholders\n.*\z/\n/s' AGENTS.md
+
+# 5. Fresh changelog and README for the new mod.
 cat > CHANGELOG.md <<CHANGELOG
 # Changelog
 
@@ -136,7 +139,7 @@ Built from [cobblemon-fabric-mod-template](https://github.com/henryennis/cobblem
 See \`AGENTS.md\` for the project map and rules, and \`docs/\` for Cobblemon hook points, conventions and releasing.
 README
 
-# 5. The new package name changes import order, so let the formatter settle it.
+# 6. The new package name changes import order, so let the formatter settle it.
 if ./gradlew -q spotlessApply; then
     FORMAT_NOTE="Formatting applied."
 else
