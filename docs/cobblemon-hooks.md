@@ -27,7 +27,7 @@ Events that matter most for catching and spawning:
 | `POKEMON_CAPTURED` | capture succeeded | `pokemon`, `player`, `pokeBallEntity` |
 | `SHINY_CHANCE_CALCULATION` | shiny roll | chance to mutate |
 | `POKEMON_ENTITY_SPAWN` | wild Pokémon placed in the world | entity, spawn context |
-| `BUCKET_CHOSEN` | rarity bucket picked for a spawn | bucket |
+| `SPAWN_BUCKET_CHOSEN` | rarity bucket picked for a spawn | bucket |
 | `BATTLE_VICTORY`, `BATTLE_FAINTED`, `BATTLE_FLED` | battle outcomes | battle, actors |
 | `POKEMON_RELEASED_EVENT_PRE` / `_POST` | release from PC or party | pokemon, player |
 | `EVOLUTION_COMPLETE` | evolution finished | pokemon, evolution |
