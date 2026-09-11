@@ -58,10 +58,11 @@ configurations {
 // GraalJS needs ICU4J. Minecraft ships ICU4J only on the client, and Loom strips client-only libraries from server runs,
 // so a normal dependency would resolve to the client copy and vanish. This configuration resolves on its own and is
 // appended to the server-side run tasks below.
-val cobblemonServerRuntime: Configuration by configurations.creating {
-    isCanBeConsumed = false
-    isCanBeResolved = true
-}
+val cobblemonServerRuntime: Configuration =
+    configurations.create("cobblemonServerRuntime") {
+        isCanBeConsumed = false
+        isCanBeResolved = true
+    }
 
 loom {
     // src/client holds client-only code. Referencing it from src/main is a compile error, which keeps the mod server-safe.
@@ -163,7 +164,9 @@ tasks {
     }
 
     jar {
-        from("LICENSE") { rename { "${it}_$modId" } }
+        // Copy into a local so the rename lambda does not capture the build script (configuration cache).
+        val licenseSuffix = modId
+        from("LICENSE") { rename { "${it}_$licenseSuffix" } }
     }
 
     test {
