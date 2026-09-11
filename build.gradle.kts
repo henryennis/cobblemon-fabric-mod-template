@@ -174,11 +174,16 @@ tasks {
     listOf("runServer", "runGametest").forEach { runTask ->
         named<RunGameTask>(runTask) { classpath(cobblemonServerRuntime) }
     }
+
+    // runDatagen writes into src/main/generated, which the sources jar packs up. When both are scheduled, datagen goes
+    // first; otherwise Gradle 9 refuses the undeclared ordering. Spotless skips that directory for the same reason.
+    named("sourcesJar") { mustRunAfter("runDatagen") }
 }
 
 spotless {
     kotlin {
         target("src/**/*.kt")
+        targetExclude("src/main/generated/**")
         ktlint()
     }
     kotlinGradle {
@@ -187,6 +192,7 @@ spotless {
     }
     java {
         target("src/**/*.java")
+        targetExclude("src/main/generated/**")
         palantirJavaFormat()
         removeUnusedImports()
     }
