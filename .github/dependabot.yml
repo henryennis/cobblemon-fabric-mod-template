@@ -24,6 +24,16 @@ updates:
       # A Minecraft version bump is a porting job, not a dependency update.
       - dependency-name: com.mojang:minecraft
       - dependency-name: org.parchmentmc.data:*
+      # These encode the Minecraft version in their minor or major number. Only patch releases stay on 1.21.1.
+      - dependency-name: net.fabricmc.fabric-api:fabric-api
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
+      - dependency-name: com.cobblemon:*
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
+      - dependency-name: com.terraformersmc:modmenu
+        update-types: ["version-update:semver-major"]
+      # Cobblemon bundles exact versions of these in its release jar (see META-INF/jars inside it). Dev must match.
+      - dependency-name: org.graalvm.*
+      - dependency-name: com.ibm.icu:icu4j
     groups:
       kotlin:
         # fabric-language-kotlin pins the Kotlin version; the two must move together.

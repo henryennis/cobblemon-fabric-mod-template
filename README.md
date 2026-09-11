@@ -74,7 +74,9 @@ tests.
 All versions live in `gradle/libs.versions.toml`. Dependabot opens grouped pull requests weekly. Two rules:
 
 - `kotlin` must match the Kotlin version embedded in `fabric-kotlin` (the part after `+kotlin.`).
-- Minecraft and Parchment bumps are porting jobs; Dependabot ignores them on purpose.
+- Minecraft and Parchment bumps are porting jobs; Dependabot ignores them on purpose. Fabric API, Cobblemon and
+  Mod Menu only get patch-level PRs, because their minor or major numbers track the Minecraft version.
+- GraalJS and ICU4J stay at the versions Cobblemon bundles in its release jar. Dependabot leaves them alone.
 
 When Cobblemon releases, bump `cobblemon`, run `./gradlew build runGametest`, fix what the compiler flags.
 

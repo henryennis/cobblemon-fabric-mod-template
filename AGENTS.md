@@ -50,7 +50,9 @@ docs/                       Cobblemon hook points, conventions, releasing
   mojmap shows in the IDE; there are no Yarn names anywhere in this project.
 - Client code lives in `src/client`. If something in `src/main` needs a client class, the design is wrong.
 - Dependency versions change only in `gradle/libs.versions.toml`. `kotlin` must equal the Kotlin version embedded in
-  `fabric-kotlin` (the part after `+kotlin.`); bump them together.
+  `fabric-kotlin` (the part after `+kotlin.`); bump them together. `graal` and `icu4j` must equal what the Cobblemon
+  release bundles under `META-INF/jars` in its jar. Fabric API, Cobblemon and Mod Menu versions must end in or target
+  the same Minecraft version as `minecraft`.
 - Translations are generated. Add keys in `EnglishLanguageProvider`, run `runDatagen`, commit the JSON.
 - Config is a Gson data class where every field has a default. Keep it that way or old config files break.
 - Subscribe to Cobblemon events once, in `onInitialize`. See `docs/cobblemon-hooks.md` for what exists.
