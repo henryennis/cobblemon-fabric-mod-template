@@ -4,7 +4,7 @@
 minecraft = "1.21.1"
 parchment = "2024.11.17"
 fabric-loader = "0.19.5"
-fabric-api = "0.116.17+1.21.1"
+fabric-api = "0.116.9+"
 fabric-kotlin = "1.14.1+kotlin.2.4.20"
 kotlin = "2.4.20"
 cobblemon = "1.8.0+1.21.1"
