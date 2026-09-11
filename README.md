@@ -34,7 +34,7 @@ Tooling that comes wired up:
   `docs/cobblemon-hooks.md` lists the Cobblemon events and extension points a side-mod is likely to need.
 
 The example code is small but real: a `/examplemod species <id>` command, a Gson config with a reload command, a
-capture listener that announces high-IV catches, one Java mixin, a language provider, two game tests and three unit
+capture listener that announces high-IV catches, one Java mixin, a language provider, two game tests and four unit
 tests.
 
 ## Quick start

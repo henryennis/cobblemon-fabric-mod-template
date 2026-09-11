@@ -38,6 +38,19 @@ class ExampleModConfigTest {
     }
 
     @Test
+    fun `a malformed file falls back to defaults and is left untouched`(
+        @TempDir dir: Path,
+    ) {
+        val path = dir.resolve("examplemod.json")
+        Files.writeString(path, "{ this is not json")
+
+        val config = ExampleModConfig.load(path)
+
+        assertEquals(ExampleModConfig(), config)
+        assertEquals("{ this is not json", Files.readString(path), "load must not overwrite a file it could not read")
+    }
+
+    @Test
     fun `values survive a save and load`(
         @TempDir dir: Path,
     ) {
