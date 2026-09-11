@@ -11,7 +11,7 @@ cobblemon = "1.8.0+1.21.1"
 modmenu = "11.0.3"
 
 # Cobblemon embeds these in its release jar for its battle engine. Dev runs need them added explicitly (see build.gradle.kts).
-graal = "22.3.0"
+graal = "25.3.4.1"
 icu4j = "71.1"
 
 loom = "1.17.20"
