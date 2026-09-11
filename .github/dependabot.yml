@@ -1,0 +1,44 @@
+version: 2
+
+registries:
+  fabric:
+    type: maven-repository
+    url: https://maven.fabricmc.net
+  cobblemon:
+    type: maven-repository
+    url: https://artefacts.cobblemon.com/releases
+  parchment:
+    type: maven-repository
+    url: https://maven.parchmentmc.org
+  terraformers:
+    type: maven-repository
+    url: https://maven.terraformersmc.com/releases
+
+updates:
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: weekly
+    registries: "*"
+    ignore:
+      # A Minecraft version bump is a porting job, not a dependency update.
+      - dependency-name: com.mojang:minecraft
+      - dependency-name: org.parchmentmc.data:*
+    groups:
+      kotlin:
+        # fabric-language-kotlin pins the Kotlin version; the two must move together.
+        patterns:
+          - org.jetbrains.kotlin*
+          - net.fabricmc:fabric-language-kotlin
+      tooling:
+        patterns:
+          - com.diffplug.spotless*
+          - me.modmuss50*
+          - net.fabricmc.fabric-loom*
+          - org.junit*
+          - io.mockk*
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

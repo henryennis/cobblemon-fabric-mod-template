@@ -1,0 +1,49 @@
+# Single source of truth for dependency versions.
+# Keep `kotlin` equal to the Kotlin version embedded in `fabric-kotlin` (the part after "+kotlin.").
+[versions]
+minecraft = "1.21.1"
+parchment = "2024.11.17"
+fabric-loader = "0.19.5"
+fabric-api = "0.116.17+1.21.1"
+fabric-kotlin = "1.14.1+kotlin.2.4.20"
+kotlin = "2.4.20"
+cobblemon = "1.8.0+1.21.1"
+modmenu = "11.0.3"
+
+# Cobblemon embeds these in its release jar for its battle engine. Dev runs need them added explicitly (see build.gradle.kts).
+graal = "22.3.0"
+icu4j = "71.1"
+
+loom = "1.17.20"
+spotless = "8.10.2"
+mod-publish = "2.2.0"
+junit = "6.1.3"
+mockk = "1.14.11"
+
+[libraries]
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
+fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
+fabric-kotlin = { module = "net.fabricmc:fabric-language-kotlin", version.ref = "fabric-kotlin" }
+cobblemon-fabric = { module = "com.cobblemon:fabric", version.ref = "cobblemon" }
+modmenu = { module = "com.terraformersmc:modmenu", version.ref = "modmenu" }
+
+graal-js = { module = "org.graalvm.js:js", version.ref = "graal" }
+graal-sdk = { module = "org.graalvm.sdk:graal-sdk", version.ref = "graal" }
+graal-regex = { module = "org.graalvm.regex:regex", version.ref = "graal" }
+graal-truffle = { module = "org.graalvm.truffle:truffle-api", version.ref = "graal" }
+icu4j = { module = "com.ibm.icu:icu4j", version.ref = "icu4j" }
+
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
+[bundles]
+cobblemon-runtime = ["graal-js", "graal-sdk", "graal-regex", "graal-truffle"]
+
+[plugins]
+loom = { id = "net.fabricmc.fabric-loom-remap", version.ref = "loom" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+mod-publish = { id = "me.modmuss50.mod-publish-plugin", version.ref = "mod-publish" }

@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Tag must match mod_version in gradle.properties
+        run: |
+          expected="v$(sed -n s/^mod_version=//p gradle.properties)"
+          if [ "$GITHUB_REF_NAME" != "$expected" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match $expected" >&2
+            exit 1
+          fi
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      - name: Build and run every test
+        run: ./gradlew build runGametest
+
+      - name: Publish to the configured destinations
+        run: ./gradlew publishMods
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}

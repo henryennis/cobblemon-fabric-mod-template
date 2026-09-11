@@ -1,0 +1,6 @@
+{
+  "examplemod.capture.notable": "Notable catch! %s has an IV total of %s out of %s",
+  "examplemod.command.reload.success": "Example Mod config reloaded",
+  "examplemod.command.species.info": "%s (#%s, %s): catch rate %s, base stat total %s",
+  "examplemod.command.species.unknown": "No Cobblemon species matches %s"
+}
