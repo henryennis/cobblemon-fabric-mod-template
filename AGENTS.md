@@ -21,7 +21,7 @@ placeholder table at the bottom of this file) before writing real features.
 | Data generation | `./gradlew runDatagen` | Rewrites `src/main/generated`. Commit the output. |
 | Client | `./gradlew runClient` | Opens a window; not for CI. |
 | Server | `./gradlew runServer` | Dedicated server in `run/`. |
-| Decompiled Minecraft | `./gradlew genSources` | Sources jar for IDE navigation. Cobblemon sources come down automatically. |
+| Decompiled Minecraft | `./gradlew genSources` | Sources jar for IDE navigation. Cobblemon's Fabric sources come down automatically; `docs/cobblemon-hooks.md` says where the shared code's sources are. |
 | Dry-run publish | `MOD_PUBLISH_DRY_RUN=1 ./gradlew publishMods` | Validates release config without uploading. |
 
 The first build downloads Minecraft and a few hundred megabytes of libraries. Later builds are incremental and cached.
