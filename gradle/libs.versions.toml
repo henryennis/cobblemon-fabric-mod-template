@@ -14,7 +14,7 @@ modmenu = "11.0.3"
 graal = "22.3.0"
 icu4j = "71.1"
 
-loom = "1.17.20"
+loom = "1.18.1"
 spotless = "8.10.2"
 mod-publish = "2.2.0"
 junit = "6.1.3"
