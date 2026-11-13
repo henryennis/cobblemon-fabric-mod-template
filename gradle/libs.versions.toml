@@ -14,11 +14,11 @@ modmenu = "11.0.3"
 graal = "22.3.0"
 icu4j = "71.1"
 
-loom = "1.17.20"
-spotless = "8.10.2"
-mod-publish = "2.2.0"
+loom = "1.19.4"
+spotless = "8.11.0"
+mod-publish = "2.2.1"
 junit = "6.1.3"
-mockk = "1.14.11"
+mockk = "1.14.12"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
